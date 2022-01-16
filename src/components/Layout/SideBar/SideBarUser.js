@@ -12,13 +12,13 @@ const SideBarUser = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/user/project" className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link text-white'}>
+            <NavLink to="/user/projects" className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link text-white'}>
               <HouseDoor />
               My Projects
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/user/licence" className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link text-white'}>
+            <NavLink to="/user/licences" className={(navData) => navData.isActive ? 'nav-link active' : 'nav-link text-white'}>
               <HouseDoor />
               Licences
             </NavLink>

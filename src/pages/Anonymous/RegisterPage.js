@@ -15,7 +15,6 @@ const RegisterPage = () => {
 
   useEffect(() => {
     if (status === "completed") {
-      debugger;
       dispatch(authActions.login({
         email: userData.email,
         name: userData.name,
