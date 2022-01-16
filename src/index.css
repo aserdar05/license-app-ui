@@ -1,0 +1,76 @@
+.centered {
+  margin: 3rem auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-5{
+  margin: 5px;
+}
+.m-10{
+  margin: 10px;
+}
+.m-20{
+  margin: 20px;
+}
+
+.mt-5{
+  margin-top: 5px;
+}
+
+.mt-10{
+  margin-top: 10px;
+}
+
+.mt-20{
+  margin-top: 20px;
+}
+
+
+
+.ml-5{
+  margin-left: 5px;
+}
+
+.ml-10{
+  margin-left: 10px;
+}
+
+.ml-20{
+  margin-left: 20px;
+}
+
+
+
+.mb-5{
+  margin-bottom: 5px;
+}
+
+.mb-10{
+  margin-bottom: 10px;
+}
+
+.mb-20{
+  margin-bottom: 20px;
+}
+
+
+
+.mr-5{
+  margin-right: 5px;
+}
+
+.mr-10{
+  margin-right: 10px;
+}
+
+.mr-20{
+  margin-right: 20px;
+}
+
+.link{
+  color: #212529;
+  text-decoration:none;
+}
