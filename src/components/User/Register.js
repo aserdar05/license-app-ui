@@ -1,12 +1,9 @@
 import { Form, Button } from "react-bootstrap";
 import { useRef, useState } from "react";
 import ArrowInRight from "../UI/Icons/ArrowInRight";
-import { useDispatch } from "react-redux";
-import { authActions } from "../../store/index";
 import useAlert from "../../hook/useAlert";
 
 const Register = (props) => {
-  const dispatch = useDispatch();
   const [validated, setValidated] = useState();
   const [addAlert, removeAlert] = useAlert();
 
@@ -29,8 +26,9 @@ const Register = (props) => {
         name: nameRef.current.value,
         surname: surnameRef.current.value,
         email: emailRef.current.value,
-        birthDateRef: birthDateRef.current.value,
+        birthDate: birthDateRef.current.value,
         password: passwordRef.current.value,
+        roleId: 1
       };
       if(registerData.password !== passwordConfirmRef.current.value){
         addAlert('warning', 'Password values entered mismatch!');
@@ -40,12 +38,7 @@ const Register = (props) => {
         removeAlert();
         console.log(registerData);
         setValidated(true);
-        dispatch(authActions.login({
-          email: registerData.email,
-          name: registerData.name,
-          surname: registerData.surname
-        }));
-        props.onRegisterSuccess();
+        props.onRegisterSuccess(registerData);
       }
     }
   };
@@ -100,7 +93,7 @@ const Register = (props) => {
           placeholder="Enter Password"
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formPassword">
+      <Form.Group className="mb-3" controlId="formPasswordConfirm">
         <Form.Label>Password Confirm</Form.Label>
         <Form.Control
           ref={passwordConfirmRef}

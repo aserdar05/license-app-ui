@@ -8,6 +8,7 @@ import LogoutPage from "./pages/Anonymous/LogoutPage";
 import RegisterPage from "./pages/Anonymous/RegisterPage";
 import UserDashboard from "./pages/User/UserDashboard";
 import UserProfile from "./pages/User/UserProfile";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user/dashboard" element={<UserDashboard />} />
         <Route path="/user/profile" element={<UserProfile />} />
+        
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         {/* <Route path="/quotes/:quoteId" element={<QuoteDetail />}>
                   <Route
                     path=""
