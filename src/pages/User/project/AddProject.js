@@ -1,23 +1,41 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ProjectDetail from "../../../components/User/ProjectDetail";
 import useHttp from "../../../hook/useHttp";
-import { saveProject } from "../../../lib/projectRepository";
+import { getProject, saveProject } from "../../../lib/projectRepository";
 
 const AddProject = (event) => {
-  const { sendRequest, status } = useHttp(saveProject);
+  const { sendSaveRequest, saveStatus } = useHttp(saveProject);
+  const { sendGetRequest, getStatus, data: loadedProject } = useHttp(getProject);
   const navigate = useNavigate();
+  const [project, setProject] = useState(null);
+  
+  const params = useParams();
+  const { projectId } = params;
 
   useEffect(() => {
-    if (status === "completed") {
+    if (saveStatus === "completed") {
       navigate("/user/projects");
     }
-  }, [status, navigate]);
+  }, [saveStatus, navigate]);
+
+  useEffect(() => {
+    if(projectId){
+      sendGetRequest(projectId);
+      if (getStatus === "completed") {
+        setProject(loadedProject);
+      }
+    }
+  }, [projectId, getStatus, sendGetRequest, loadedProject])
   
   const projectAddHandler = (projectData) => {
-    sendRequest(projectData);
+    sendSaveRequest(projectData);
+  };
+
+  const projectUpdateHandler = (projectData) => {
+    //sendSaveRequest(projectData);
   };
 
   return (
@@ -28,7 +46,7 @@ const AddProject = (event) => {
             <Card className="mt-20">
               <Card.Header>Add New Project</Card.Header>
               <Card.Body>
-                <ProjectDetail onAddProject={projectAddHandler} />
+                <ProjectDetail onAddProject={projectAddHandler} onUpdateProject={projectUpdateHandler} project={project} />
               </Card.Body>
             </Card>
           </Col>

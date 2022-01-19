@@ -1,6 +1,5 @@
-import { Routes,  Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import NotFound from './pages/Anonymous/NotFound';
+import { Routes, Route, Navigate } from "react-router-dom";
+import NotFound from "./pages/Anonymous/NotFound";
 import "./App.css";
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/Anonymous/HomePage";
@@ -12,10 +11,9 @@ import UserProfile from "./pages/User/UserProfile";
 import UserProjects from "./pages/User/project/UserProjects";
 import AddProject from "./pages/User/project/AddProject";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AuthGuard from "./security/AuthGuard";
 
 function App() {
-  const authInfo = useSelector((state) => state.auth);
-  const roleId = authInfo.userData.roleId;
   return (
     <Layout>
       <Routes>
@@ -24,12 +22,55 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<LogoutPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user/dashboard" element={<UserDashboard />} />
-        <Route path="/user/profile" element={<UserProfile />} />
-        <Route path="/user/project" element={<AddProject />} />
-        <Route path="/user/projects" element={<UserProjects />} />
-        
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route
+          path="/user/dashboard"
+          element={
+            <AuthGuard roleId="1">
+              <UserDashboard />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/user/profile"
+          element={
+            <AuthGuard roleId="1">
+              <UserProfile />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/user/project"
+          element={
+            <AuthGuard roleId="1">
+              <AddProject />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/user/project/:projectId"
+          element={
+            <AuthGuard roleId="1">
+              <AddProject />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/user/projects"
+          element={
+            <AuthGuard roleId="1">
+              <UserProjects />
+            </AuthGuard>
+          }
+        />
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AuthGuard roleId="1">
+              <AdminDashboard />
+            </AuthGuard>
+          }
+        />
         {/* <Route path="/quotes/:quoteId" element={<QuoteDetail />}>
                   <Route
                     path=""

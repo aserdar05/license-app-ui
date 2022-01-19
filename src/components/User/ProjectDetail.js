@@ -11,9 +11,12 @@ const ProjectDetail = (props) => {
 
   let projectData = {};
   const isUpdate = props && props.project;
-  if (isUpdate) {
-    projectData = props.project;
-  }
+
+  useRef(() => {
+    if(isUpdate){
+      projectData = props.project;
+    }
+  }, []);
 
   const projectSaveSubmitHandler = (event) => {
     setValidated(true);

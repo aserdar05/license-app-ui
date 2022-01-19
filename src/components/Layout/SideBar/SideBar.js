@@ -8,7 +8,6 @@ import SideBarAdmin from "./SideBarAdmin";
 
 function SideBar() {
   const authInfo = useSelector((state) => state.auth);
-
   return (
     <main className="sidebar full-height">
       <div

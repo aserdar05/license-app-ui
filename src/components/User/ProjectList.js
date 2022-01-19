@@ -1,5 +1,5 @@
 import { Table, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Plus from "../UI/Icons/Plus";
 
 const ProjectList = (props) => {
@@ -14,27 +14,27 @@ const ProjectList = (props) => {
         <Plus />
         Add New Project
       </Button>
-      <Table striped bordered hover>
+      <Table striped bordered hover >
         <thead>
           <tr>
             <th>Project Name</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Status</th>
-            <th></th>
+            <th width="120px"></th>
           </tr>
         </thead>
         <tbody>
           {props.projectList &&
             props.projectList.length > 0 &&
             props.projectList.map((p) => (
-              <tr>
+              <tr key={p.id}>
                 <td>{p.name}</td>
                 <td>{p.startDate}</td>
                 <td>{p.endDate}</td>
                 <td>{p.status}</td>
-                <td>
-                  {/* <NavLink to={`/user/project/${p.id}`}>Detail</NavLink> */}
+                <td className="text-center">
+                  {<NavLink to={`/user/project/${p.id}`} className="btn btn-secondary">Detail</NavLink> }
                 </td>
               </tr>
             ))}
