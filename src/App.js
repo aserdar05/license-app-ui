@@ -1,4 +1,5 @@
 import { Routes,  Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import NotFound from './pages/Anonymous/NotFound';
 import "./App.css";
 import Layout from "./components/Layout/Layout";
@@ -13,6 +14,8 @@ import AddProject from "./pages/User/project/AddProject";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
+  const authInfo = useSelector((state) => state.auth);
+  const roleId = authInfo.userData.roleId;
   return (
     <Layout>
       <Routes>

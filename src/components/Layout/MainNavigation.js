@@ -23,12 +23,12 @@ const MainNavigation = () => {
 
           {authInfo.isAuthenticated && (
             <NavDropdown
-              title={authInfo.name + " " + authInfo.surname}
+              title={authInfo.userData.name + " " + authInfo.userData.surname}
               id="basic-nav-dropdown"
             >
               <NavDropdown.Item className="link">
                 <NavLink to="/user/profile" className="link">
-                  {authInfo.email}
+                  {authInfo.userData.email}
                 </NavLink>
               </NavDropdown.Item>
               <NavDropdown.Divider />

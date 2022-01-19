@@ -28,10 +28,10 @@ function SideBar() {
         {!authInfo.isAuthenticated && (
           <SideBarAnonymous/>
         )}
-        {(authInfo.isAuthenticated && authInfo.roleId === 1) && (
+        {(authInfo.isAuthenticated && authInfo.userData.roleId === 1) && (
           <SideBarUser/>
         )}
-        {(authInfo.isAuthenticated && authInfo.roleId === 2) && (
+        {(authInfo.isAuthenticated && authInfo.userData.roleId === 2) && (
           <SideBarAdmin/>
         )}
         

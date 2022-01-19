@@ -15,10 +15,14 @@ const RegisterPage = () => {
 
   useEffect(() => {
     if (status === "completed") {
-      dispatch(authActions.login({
-        email: userData.email,
-        name: userData.name,
-        surname: userData.surname
+      dispatch(authActions.login({ 
+        token: '7E3AF83B-6262-4901-B356-13EF274EB811',
+        userData: {
+          email: userData.email,
+          name: userData.name,
+          surname: userData.surname,
+          roleId: 1  
+        }
       }));
       navigate("/user/dashboard");
     }

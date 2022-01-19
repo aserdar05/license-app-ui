@@ -21,10 +21,13 @@ const LoginPage = () => {
       if(loadedUser){
         removeAlert();
         dispatch(authActions.login({
-          email: loadedUser.email,
-          name: loadedUser.name,
-          surname: loadedUser.surname,
-          roleId: loadedUser.roleId 
+          token: '7E3AF83B-6262-4901-B356-13EF274EB811',
+          userData: {
+            email: loadedUser.email,
+            name: loadedUser.name,
+            surname: loadedUser.surname,
+            roleId: loadedUser.roleId 
+          }          
         }));
         if(loadedUser.roleId === 1){
           navigate('/user/dashboard');

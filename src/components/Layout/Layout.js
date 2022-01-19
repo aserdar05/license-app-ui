@@ -1,6 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Fragment } from "react/cjs/react.production.min";
-import classes from "./Layout.module.css";
 import MainNavigation from "./MainNavigation";
 import { useSelector } from "react-redux";
 import { Alert } from "react-bootstrap";
