@@ -7,8 +7,8 @@ import useHttp from "../../../hook/useHttp";
 import { getProject, saveProject } from "../../../lib/projectRepository";
 
 const AddProject = (event) => {
-  const { sendSaveRequest, saveStatus } = useHttp(saveProject);
-  const { sendGetRequest, getStatus, data: loadedProject } = useHttp(getProject);
+  const { sendRequest: sendSaveRequest, saveStatus } = useHttp(saveProject);
+  const { sendRequest: sendGetRequest, getStatus, data: loadedProject } = useHttp(getProject);
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
   
