@@ -1,7 +1,7 @@
 import "./SideBar.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import AppIndicator from "../../UI/Icons/AppIndicator";
+import { AppIndicator } from "react-bootstrap-icons";
 import SideBarAnonymous from "./SideBarAnonymous";
 import SideBarUser from "./SideBarUser";
 import SideBarAdmin from "./SideBarAdmin";
@@ -35,7 +35,7 @@ function SideBar() {
         )}
         
         <hr />
-        <small>Copyright Serdar AYDIN</small>
+        <small>©Copyright Serdar AYDIN</small>
       </div>
     </main>
   );

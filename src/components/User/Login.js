@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useRef } from "react";
-import ArrowInRight from "../UI/Icons/ArrowInRight";
+import { ArrowRightCircle } from "react-bootstrap-icons";
 
 const Login = (props) => {
   //   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -49,7 +49,7 @@ const Login = (props) => {
       </Form.Group>
       <Button variant="primary" type="submit">
         Login
-        <ArrowInRight />
+        <ArrowRightCircle className="ml-5" />
       </Button>
     </Form>
   );

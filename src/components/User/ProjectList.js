@@ -1,6 +1,6 @@
 import { Table, Button } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
-import Plus from "../UI/Icons/Plus";
+import { Plus } from "react-bootstrap-icons";
 
 const ProjectList = (props) => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const ProjectList = (props) => {
   return (
     <div>
       <Button variant="btn btn-secondary float-end" onClick={handleAddProject}>
-        <Plus />
+        <Plus size={20} />
         Add New Project
       </Button>
       <Table striped bordered hover >

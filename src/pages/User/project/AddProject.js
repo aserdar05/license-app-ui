@@ -7,8 +7,8 @@ import useHttp from "../../../hook/useHttp";
 import { getProject, saveProject } from "../../../lib/projectRepository";
 
 const AddProject = (event) => {
-  const { sendRequest: sendSaveRequest, saveStatus } = useHttp(saveProject);
-  const { sendRequest: sendGetRequest, getStatus, data: loadedProject } = useHttp(getProject);
+  const { sendRequest: sendSaveRequest, status: saveStatus } = useHttp(saveProject);
+  const { sendRequest: sendGetRequest, status: getStatus, data: loadedProject } = useHttp(getProject);
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
   
@@ -24,11 +24,14 @@ const AddProject = (event) => {
   useEffect(() => {
     if(projectId){
       sendGetRequest(projectId);
-      if (getStatus === "completed") {
-        setProject(loadedProject);
-      }
     }
-  }, [projectId, getStatus, sendGetRequest, loadedProject])
+  }, [projectId])
+
+  useEffect(() => {
+    if (getStatus === "completed") {
+      setProject(loadedProject);
+    }
+  }, [getStatus])      
   
   const projectAddHandler = (projectData) => {
     sendSaveRequest(projectData);

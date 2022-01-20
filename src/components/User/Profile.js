@@ -1,5 +1,4 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
-import SaveIcon from '../UI/Icons/SaveIcon';
 
 const Profile = (props) => {
   const userData = props.userData;
@@ -44,7 +43,6 @@ const Profile = (props) => {
         <Col sm={{ span: 10, offset: 2 }}>
           <Button variant="primary" type="submit">
             Update
-            { <SaveIcon /> }
           </Button>
         </Col>
       </Form.Group>

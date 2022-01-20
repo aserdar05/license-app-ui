@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useRef, useState } from "react";
-import ArrowInRight from "../UI/Icons/ArrowInRight";
+import { BoxArrowInRight } from "react-bootstrap-icons";
 import useAlert from "../../hook/useAlert";
 
 const Register = (props) => {
@@ -104,7 +104,7 @@ const Register = (props) => {
       </Form.Group>
       <Button variant="primary" type="submit">
         Register
-        <ArrowInRight />
+        <BoxArrowInRight />
       </Button>
     </Form>
   );

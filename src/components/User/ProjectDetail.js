@@ -1,5 +1,5 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ProjectDetail = (props) => {
   const [validated, setValidated] = useState();
@@ -9,14 +9,16 @@ const ProjectDetail = (props) => {
   const statusRef = useRef();
   const detailRef = useRef();
 
-  let projectData = {};
-  const isUpdate = props && props.project;
+  const [projectData, setProjectData] = useState({
+    name: ''
+  });
+  const isUpdate = (props && props.project) ? true : false;
 
-  useRef(() => {
+  useEffect(() => {
     if(isUpdate){
-      projectData = props.project;
+      setProjectData(props.project);
     }
-  }, []);
+  }, [props]);
 
   const projectSaveSubmitHandler = (event) => {
     setValidated(true);
@@ -38,6 +40,8 @@ const ProjectDetail = (props) => {
     }
   };
 
+  const onChangeHandler = () => {};
+
   return (
     <Form noValidate validated={validated} onSubmit={projectSaveSubmitHandler}>
       <Form.Group as={Row} className="mb-3" controlId="formProjectName">
@@ -45,43 +49,43 @@ const ProjectDetail = (props) => {
           Project Name
         </Form.Label>
         <Col sm="10">
-          <Form.Control ref={nameRef} type="text" value={projectData.name} />
+          <Form.Control ref={nameRef} type="text" value={projectData.name} onChange={onChangeHandler} />
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+      <Form.Group as={Row} className="mb-3" controlId="formProjectStart">
         <Form.Label column sm="2">
           Start Date
         </Form.Label>
         <Col sm="10">
-          <Form.Control ref={startDateRef} type="date" value={projectData.startDate} />
+          <Form.Control ref={startDateRef} type="date" value={projectData.startDate} onChange={onChangeHandler} />
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+      <Form.Group as={Row} className="mb-3" controlId="formProjectEnd">
         <Form.Label column sm="2">
           End Date
         </Form.Label>
         <Col sm="10">
-          <Form.Control ref={endDateRef} type="date" value={projectData.endDate} />
+          <Form.Control ref={endDateRef} type="date" value={projectData.endDate} onChange={onChangeHandler} />
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+      <Form.Group as={Row} className="mb-3" controlId="formProjectStatus">
         <Form.Label column sm="2">
           Project Status
         </Form.Label>
         <Col sm="10">
-          <Form.Control ref={statusRef} type="text" value={projectData.status} />
+          <Form.Control ref={statusRef} type="text" value={projectData.status} onChange={onChangeHandler} />
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+      <Form.Group as={Row} className="mb-3" controlId="formProjectDetail">
         <Form.Label column sm="2">
           Project Detail
         </Form.Label>
         <Col sm="10">
-          <Form.Control ref={detailRef} as="textarea" rows={3} value={projectData.detail} />
+          <Form.Control ref={detailRef} as="textarea" rows={3} value={projectData.detail} onChange={onChangeHandler} />
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3">
